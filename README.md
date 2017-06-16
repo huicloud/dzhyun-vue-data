@@ -79,7 +79,7 @@
 - **params** `Object` 参照 Dzhyun 实例方法query的参数，修改会重新取消请求后重新查询
 - **shrinkData** `Boolean` 参照 Dzhyun 实例方法query的参数，修改会重新取消请求后重新查询
 - **propName** `String` 可选，数据传入子组件对应的属性名称，默认值'data'，
-- **initData** `Object` 可选，初始数据，默认null
+- **initData** `Object|Array` 可选，初始数据，默认空数组[]
 - **reset** `Boolean` 可选，是否在修改参数取消请求时，将数据重置为初始数据, 默认false
 - **adapt** `Function` 可选，设置数据的处理方法，对于得到的数据后经过该方法处理后再传给子组件，第一个参数是本次的数据，第二个参数是上次的数据
 - **autoQuery** `Boolean` 可选，是否会在创建后自动查询，默认true

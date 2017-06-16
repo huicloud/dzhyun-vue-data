@@ -1,6 +1,6 @@
 {
   "name": "dzhyun-vue-data",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "大智慧云vue数据组件",
   "main": "lib/index.js",
   "scripts": {

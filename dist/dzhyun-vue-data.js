@@ -119,11 +119,11 @@ exports.default = _vue2.default.component('dzhyun-data-query', {
       default: 'data'
     },
 
-    // 初始数据
+    // 初始数据，默认[]
     initData: {
-      type: Object,
+      type: [Object, Array],
       default: function _default() {
-        return null;
+        return [];
       }
     },
 
@@ -198,11 +198,12 @@ exports.default = _vue2.default.component('dzhyun-data-query', {
     callback: function callback(result) {
       if (result instanceof Error) {
         this.$emit('error', result);
+      } else {
+        if (this.adapt) result = this.adapt(result, this.data);
+        this.$dzhyunData = result;
+        this.data = result;
+        this.$emit('data', result);
       }
-      if (this.adapt) result = this.adapt(result, this.data);
-      this.$dzhyunData = result;
-      this.data = result;
-      this.$emit('data', result);
     }
   },
   beforeMount: function beforeMount() {

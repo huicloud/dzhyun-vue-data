@@ -16,10 +16,10 @@ export default Vue.component('dzhyun-data-query', {
       default: 'data',
     },
 
-    // 初始数据
+    // 初始数据，默认[]
     initData: {
-      type: Object,
-      default: function() { return null; },
+      type: [Object, Array],
+      default: function() { return []; },
     },
 
     // 是否在改变参数时重置数据为初始数据
@@ -93,11 +93,12 @@ export default Vue.component('dzhyun-data-query', {
     callback(result) {
       if (result instanceof Error) {
         this.$emit('error', result);
+      } else {
+        if (this.adapt) result = this.adapt(result, this.data);
+        this.$dzhyunData = result;
+        this.data = result;
+        this.$emit('data', result);
       }
-      if (this.adapt) result = this.adapt(result, this.data);
-      this.$dzhyunData = result;
-      this.data = result;
-      this.$emit('data', result);
     },
   },
   beforeMount() {
